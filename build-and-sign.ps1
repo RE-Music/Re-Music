@@ -7,8 +7,10 @@ Write-Host "--- Cleaning up target bundles ---" -ForegroundColor Cyan
 if (Test-Path "src-tauri/target/release/bundle") { Remove-Item -Recurse -Force "src-tauri/target/release/bundle" }
 
 Write-Host "--- Setting environment variables ---" -ForegroundColor Cyan
+$PUBKEY = "RWS9jTw3/6YRZvGPdgKvt6obZkgvPZPoQLzqAFwVgSAEkhYWQ+crSK0A"
 $env:TAURI_SIGNING_PRIVATE_KEY = $CLEAN_KEY_ONLY
 $env:TAURI_SIGNING_PRIVATE_KEY_PASSWORD = $PASSWORD
+$env:TAURI_SIGNING_PUBLIC_KEY = $PUBKEY
 
 Write-Host "Starting build via npx tauri..." -ForegroundColor Green
 npx tauri build --verbose

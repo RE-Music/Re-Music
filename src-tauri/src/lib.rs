@@ -938,8 +938,10 @@ pub fn run() {
     .plugin(tauri_plugin_dialog::init())
     .plugin(tauri_plugin_store::Builder::default().build())
     .plugin({
-        println!("[DEBUG] Initializing Updater Plugin...");
-        tauri_plugin_updater::Builder::new().build()
+        println!("[DEBUG] Initializing Updater Plugin with hardcoded key...");
+        tauri_plugin_updater::Builder::new()
+            .pubkey("RWS9jTw3/6YRZvGPdgKvt6obZkgvPZPoQLzqAFwVgSAEkhYWQ+crSK0A")
+            .build()
     })
     .plugin(tauri_plugin_process::init())
     .setup(move |app| {

@@ -1,20 +1,26 @@
 const fs = require('fs');
 const path = require('path');
 
-const version = "1.1.1";
-const sigPath = path.join('src-tauri', 'target', 'release', 'bundle', 'msi', 'RE-Music_1.1.1_x64_en-US.msi.sig');
-// Get the decoded ASCII armor string
-const sigBase64 = fs.readFileSync(sigPath, 'utf8').trim();
-const sigContent = Buffer.from(sigBase64, 'base64').toString('utf8').trim();
+const version = "1.1.2";
+const sigPath = path.join('src-tauri', 'target', 'release', 'bundle', 'msi', `RE-Music_${version}_x64_en-US.msi.sig`);
+
+if (!fs.existsSync(sigPath)) {
+    console.error('Signature file not found. build first.');
+    process.exit(1);
+}
+
+// Get the FULL ASCII block (Base64 of the entire armored block)
+const sigBase64Decoded = fs.readFileSync(sigPath, 'utf8').trim();
+const block = Buffer.from(sigBase64Decoded, 'base64').toString('utf8').trim();
 
 const platformDefault = {
-    signature: sigContent,
+    signature: block,
     url: `https://github.com/RE-Music/Re-Music/releases/download/v${version}/RE-Music_${version}_x64_en-US.msi`
 };
 
 const updateJson = {
     version: version,
-    notes: `Release v${version}: Fix Yandex/YouTube Auth, optimized startup and UI stability.`,
+    notes: `Release v${version}: Fixed updater signature verification (hardcoded keys + full-block integrity).`,
     pub_date: new Date().toISOString(),
     platforms: {
         "windows-x86_64": platformDefault,
@@ -25,4 +31,5 @@ const updateJson = {
 };
 
 fs.writeFileSync('update.json', JSON.stringify(updateJson, null, 2));
-console.log('Successfully generated RAW ASCII ARMOR update.json');
+console.log('Successfully generated v1.1.2 update.json with FULL BLOCK signature.');
+console.log('Signature preview: ' + block.substring(0, 50) + '...');

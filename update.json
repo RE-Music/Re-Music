@@ -1,23 +1,23 @@
 {
-  "version": "1.1.1",
-  "notes": "Release v1.1.1: Fix Yandex/YouTube Auth, optimized startup and UI stability.",
-  "pub_date": "2026-04-04T19:02:32.220Z",
+  "version": "1.1.2",
+  "notes": "Release v1.1.2: Fixed updater signature verification (hardcoded keys + full-block integrity).",
+  "pub_date": "2026-04-04T19:11:03.607Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMts+wYCax3EuZdepBOjFrlBeEvzQfWzNg3hrqEQLUCwb4wsu1mC004nMEgQCT5PMfrjRaYDkEnMtm5q3/NZbMGgo=\ntrusted comment: timestamp:1775325563\tfile:RE-Music_1.1.1_x64_en-US.msi\n4crod4eV5C1QZmmmDE1r8Tq+C9Ed9kvXMqo/pRs8tC/jsdhuTozUW+VvjFJ7dNAJPvU6jlXvrXQBIlKq2rd0Bg==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.1/RE-Music_1.1.1_x64_en-US.msi"
+      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtqWJeXGPc8DUS/bznV9J3xmaCdEr4y9M+ix2dyy2npN5U6+2AumkSYAr4AOLABR6pZa1E8Uh33gTQgYuWw4pJwY=\ntrusted comment: timestamp:1775329819\tfile:RE-Music_1.1.2_x64_en-US.msi\nFYvEtmLY8qf+QWtLu3y7PqAAPTreOwdqGr9d12JK9oDJbaEMgcuHJ3wbd182PSangPSMfbJ6gKnN/VbKVgttAg==",
+      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.2/RE-Music_1.1.2_x64_en-US.msi"
     },
     "windows-x86_64-msi": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMts+wYCax3EuZdepBOjFrlBeEvzQfWzNg3hrqEQLUCwb4wsu1mC004nMEgQCT5PMfrjRaYDkEnMtm5q3/NZbMGgo=\ntrusted comment: timestamp:1775325563\tfile:RE-Music_1.1.1_x64_en-US.msi\n4crod4eV5C1QZmmmDE1r8Tq+C9Ed9kvXMqo/pRs8tC/jsdhuTozUW+VvjFJ7dNAJPvU6jlXvrXQBIlKq2rd0Bg==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.1/RE-Music_1.1.1_x64_en-US.msi"
+      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtqWJeXGPc8DUS/bznV9J3xmaCdEr4y9M+ix2dyy2npN5U6+2AumkSYAr4AOLABR6pZa1E8Uh33gTQgYuWw4pJwY=\ntrusted comment: timestamp:1775329819\tfile:RE-Music_1.1.2_x64_en-US.msi\nFYvEtmLY8qf+QWtLu3y7PqAAPTreOwdqGr9d12JK9oDJbaEMgcuHJ3wbd182PSangPSMfbJ6gKnN/VbKVgttAg==",
+      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.2/RE-Music_1.1.2_x64_en-US.msi"
     },
     "windows-x64": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMts+wYCax3EuZdepBOjFrlBeEvzQfWzNg3hrqEQLUCwb4wsu1mC004nMEgQCT5PMfrjRaYDkEnMtm5q3/NZbMGgo=\ntrusted comment: timestamp:1775325563\tfile:RE-Music_1.1.1_x64_en-US.msi\n4crod4eV5C1QZmmmDE1r8Tq+C9Ed9kvXMqo/pRs8tC/jsdhuTozUW+VvjFJ7dNAJPvU6jlXvrXQBIlKq2rd0Bg==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.1/RE-Music_1.1.1_x64_en-US.msi"
+      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtqWJeXGPc8DUS/bznV9J3xmaCdEr4y9M+ix2dyy2npN5U6+2AumkSYAr4AOLABR6pZa1E8Uh33gTQgYuWw4pJwY=\ntrusted comment: timestamp:1775329819\tfile:RE-Music_1.1.2_x64_en-US.msi\nFYvEtmLY8qf+QWtLu3y7PqAAPTreOwdqGr9d12JK9oDJbaEMgcuHJ3wbd182PSangPSMfbJ6gKnN/VbKVgttAg==",
+      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.2/RE-Music_1.1.2_x64_en-US.msi"
     },
     "windows-x64-msi": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMts+wYCax3EuZdepBOjFrlBeEvzQfWzNg3hrqEQLUCwb4wsu1mC004nMEgQCT5PMfrjRaYDkEnMtm5q3/NZbMGgo=\ntrusted comment: timestamp:1775325563\tfile:RE-Music_1.1.1_x64_en-US.msi\n4crod4eV5C1QZmmmDE1r8Tq+C9Ed9kvXMqo/pRs8tC/jsdhuTozUW+VvjFJ7dNAJPvU6jlXvrXQBIlKq2rd0Bg==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.1/RE-Music_1.1.1_x64_en-US.msi"
+      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtqWJeXGPc8DUS/bznV9J3xmaCdEr4y9M+ix2dyy2npN5U6+2AumkSYAr4AOLABR6pZa1E8Uh33gTQgYuWw4pJwY=\ntrusted comment: timestamp:1775329819\tfile:RE-Music_1.1.2_x64_en-US.msi\nFYvEtmLY8qf+QWtLu3y7PqAAPTreOwdqGr9d12JK9oDJbaEMgcuHJ3wbd182PSangPSMfbJ6gKnN/VbKVgttAg==",
+      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.2/RE-Music_1.1.2_x64_en-US.msi"
     }
   }
 }
