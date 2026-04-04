@@ -459,7 +459,12 @@ impl MusicProvider for YandexProvider {
         use tauri::WebviewUrl;
 
         let client_id = "23cabbbdc6cd418abb4b39c32c41195d";
-        let auth_url = format!("https://oauth.yandex.ru/authorize?response_type=token&client_id={}&force_confirm=yes", client_id);
+        let redirect_uri = "https://oauth.yandex.ru/verification_code";
+        let auth_url = format!(
+            "https://oauth.yandex.ru/authorize?response_type=token&client_id={}&force_confirm=yes&redirect_uri={}", 
+            client_id, 
+            redirect_uri
+        );
         
         let (tx, rx) = tokio::sync::oneshot::channel();
         let tx = Arc::new(tokio::sync::Mutex::new(Some(tx)));

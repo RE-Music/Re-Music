@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ShieldCheck, Info, Languages, Trash2, Sun, ChevronDown, Zap } from 'lucide-react';
+import { Globe, ShieldCheck, Info, Languages, Trash2, Sun, ChevronDown } from 'lucide-react';
 import { useAppStore } from '../../store/useAppStore';
 import type { Language, Theme } from '../../store/useAppStore';
 import { getTranslation } from '../../utils/i18n';
@@ -7,34 +7,23 @@ import { getTranslation } from '../../utils/i18n';
 interface Settings {
   theme: Theme;
   language: Language;
-  vibeGifMode: string;
-  profileName: string;
+  proxyEnabled: boolean;
+  proxyUrl: string;
 }
 
 export const SettingsView = () => {
-  const { 
-    providers, 
-    setTheme, 
-    language, 
-    setLanguage, 
-    vibeGifMode: _, 
-    setVibeGifMode, 
-    setAuthStatus: setGlobalAuthStatus,
-    profileName: __,
-    setProfileName
-  } = useAppStore();
+  const { providers, setTheme, language, setLanguage } = useAppStore();
   const t = getTranslation(language) as any;
   
   const [settings, setSettings] = useState<Settings>({
     theme: 'tech-dark',
     language: 'ru',
-    vibeGifMode: 'cats',
-    profileName: ''
+    proxyEnabled: false,
+    proxyUrl: ''
   });
   const [authStatus, setAuthStatus] = useState<Record<string, boolean>>({});
   const [authDetails, setAuthDetails] = useState<Record<string, { username: string; avatarUrl?: string } | null>>({});
   const [isLoading, setIsLoading] = useState(true);
-  const [isAuthLoading, setIsAuthLoading] = useState<Record<string, boolean>>({});
   const [isThemeExpanded, setIsThemeExpanded] = useState(false);
 
   useEffect(() => {
@@ -50,8 +39,6 @@ export const SettingsView = () => {
       ]);
       setSettings(settingsData);
       setAuthStatus(authData);
-      setGlobalAuthStatus(authData);
-      setVibeGifMode(settingsData.vibeGifMode || 'cats');
       setAuthDetails(detailsData);
     } catch (e) {
       console.error('Failed to load settings data:', e);
@@ -65,20 +52,17 @@ export const SettingsView = () => {
       setSettings(prev => ({ ...prev, [key]: value }));
       if (key === 'theme') setTheme(value);
       if (key === 'language') setLanguage(value);
-      if (key === 'vibeGifMode') setVibeGifMode(value);
-      if (key === 'profileName') setProfileName(value);
       await window.electronAPI.invoke('update-setting', { key, value });
     } catch (e) {
       console.error(`Failed to update setting ${key}:`, e);
     }
   };
 
-
-
   const handleLogout = async (providerId: string) => {
     if (confirm(`Are you sure you want to logout from ${providerId}?`)) {
       await window.electronAPI.invoke('logout-provider', providerId);
       setAuthStatus(prev => ({ ...prev, [providerId]: false }));
+      alert(`Logged out from ${providerId}.`);
     }
   };
 
@@ -159,28 +143,6 @@ export const SettingsView = () => {
             </div>
           </div>
 
-          <div className="divider-glow" style={{ margin: '24px 0' }}></div>
-
-          <div className="section-title">
-            <Zap size={20} className="text-premium" />
-            <h3>{t.settings?.vibeSection || 'Vibe Customization'}</h3>
-          </div>
-          <div className="setting-control">
-            <label>{t.settings?.vibeGifMode || 'Core Animation Mode'}</label>
-            <div className="language-selector-container">
-              <Zap size={18} color="var(--accent-color)" />
-              <select 
-                value={settings.vibeGifMode} 
-                onChange={(e) => updateSetting('vibeGifMode', e.target.value)}
-                className="glass-select"
-              >
-                <option value="cats">{t.settings?.vibeCats || 'Cats Only 🐈'}</option>
-                <option value="all">{t.settings?.vibeAll || 'All GIFs 🌈'}</option>
-                <option value="off">{t.settings?.vibeOff || 'Static ⚡'}</option>
-              </select>
-            </div>
-          </div>
-
           <div className="setting-control" style={{ marginTop: '24px' }}>
             <label>{t.settings?.language || 'Language'}</label>
             <div className="language-selector-container">
@@ -197,7 +159,43 @@ export const SettingsView = () => {
           </div>
         </section>
 
-
+        {/* Network Section */}
+        <section className="settings-section">
+          <div className="section-title">
+            <Globe size={20} />
+            <h3>{t.settings?.network || 'Network'}</h3>
+          </div>
+          <div className="setting-control checkbox">
+            <label htmlFor="proxy-enable">{t.settings?.enableProxy || 'Enable Proxy'}</label>
+            <input 
+              id="proxy-enable"
+              type="checkbox" 
+              checked={settings.proxyEnabled}
+              onChange={(e) => updateSetting('proxyEnabled', e.target.checked)}
+            />
+          </div>
+          <div className={`setting-control ${!settings.proxyEnabled ? 'disabled' : ''}`}>
+            <label>{t.settings?.proxyAddress || 'Proxy Address'}</label>
+            <div className="input-with-action">
+              <input 
+                type="text" 
+                placeholder="http://127.0.0.1:8080"
+                value={settings.proxyUrl}
+                disabled={!settings.proxyEnabled}
+                onChange={(e) => setSettings(prev => ({ ...prev, proxyUrl: e.target.value }))}
+                onKeyDown={(e) => e.key === 'Enter' && updateSetting('proxyUrl', settings.proxyUrl)}
+              />
+              <button 
+                className="action-btn-small" 
+                onClick={() => updateSetting('proxyUrl', settings.proxyUrl)}
+                disabled={!settings.proxyEnabled}
+              >
+                {t.settings?.apply || 'Apply'}
+              </button>
+            </div>
+          </div>
+          <p className="setting-hint">{t.settings?.proxyHint}</p>
+        </section>
 
         {/* Accounts Section */}
         <section className="settings-section">
@@ -205,28 +203,8 @@ export const SettingsView = () => {
             <ShieldCheck size={20} />
             <h3>{t.settings?.accounts || 'Accounts'}</h3>
           </div>
-          
-          <div className="setting-control" style={{ marginBottom: '16px', padding: '16px', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px border rgba(255,255,255,0.05)' }}>
-            <label style={{ fontSize: '10px', opacity: 0.6 }}>Локальный профиль</label>
-            <div className="input-with-action">
-              <input 
-                type="text" 
-                placeholder="Твое имя..."
-                value={settings.profileName}
-                onChange={(e) => setSettings(prev => ({ ...prev, profileName: e.target.value }))}
-                onKeyDown={(e) => e.key === 'Enter' && updateSetting('profileName', settings.profileName)}
-              />
-              <button 
-                className="action-btn-small" 
-                onClick={() => updateSetting('profileName', settings.profileName)}
-              >
-                OK
-              </button>
-            </div>
-          </div>
-
           <div className="account-list">
-            {providers.map(p => {
+            {providers.filter(p => p.id !== 'youtube').map(p => {
               const connected = !!authStatus[p.id];
               const details = authDetails[p.id];
               return (
@@ -248,20 +226,11 @@ export const SettingsView = () => {
                     <Trash2 size={16} /> {t.settings?.disconnect}
                   </button>
                 ) : (
-                  <button 
-                    className="action-btn-small" 
-                    disabled={isAuthLoading[p.id]}
-                    onClick={async () => {
-                      setIsAuthLoading(prev => ({ ...prev, [p.id]: true }));
-                      try {
-                        const success = await window.electronAPI.invoke('auth-provider', p.id);
-                        if (success) loadData();
-                      } finally {
-                        setIsAuthLoading(prev => ({ ...prev, [p.id]: false }));
-                      }
-                    }}
-                  >
-                    {isAuthLoading[p.id] ? '...' : (t.settings?.authorize || 'Connect')}
+                  <button className="action-btn-small" onClick={async () => {
+                    const success = await window.electronAPI.invoke('auth-provider', p.id);
+                    if (success) loadData();
+                  }}>
+                    {t.settings?.authorize || 'Connect'}
                   </button>
                 )}
               </div>
@@ -278,7 +247,7 @@ export const SettingsView = () => {
           <div className="about-info">
             <div className="info-row">
               <span>{t.settings?.version || 'Version'}</span>
-              <span>1.0.9-alpha</span>
+              <span>1.0.0-alpha</span>
             </div>
             <div className="info-row">
               <span>{t.settings?.developers || 'Developers'}</span>
@@ -286,7 +255,7 @@ export const SettingsView = () => {
             </div>
             <div className="info-row :D">
               <span>{t.settings?.core || 'Core'}</span>
-              <span>Tauri v2 + Vite + React</span>
+              <span>Electron + Vite + React</span>
             </div>
           </div>
         </section>

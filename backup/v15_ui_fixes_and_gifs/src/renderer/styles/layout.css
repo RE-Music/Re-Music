@@ -1,0 +1,119 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+/* Soul & Depth: Holographic Background Grid */
+.theme-tech-dark .app-container::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(0, 242, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 242, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Integrated Grid Layout */
+.app-layout {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 90px);
+  position: relative;
+  z-index: 1;
+}
+
+
+.sidebar {
+  width: 280px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-surface) 100%);
+  border-right: var(--border-std);
+  position: relative;
+  z-index: 2;
+  transition: width var(--transition-smooth);
+}
+
+.main-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+
+.player-bar {
+  height: 90px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  background: linear-gradient(90deg, var(--bg-panel) 0%, var(--bg-surface) 100%);
+  border-top: var(--border-std);
+  z-index: 3;
+}
+
+/* Page Containers with Vibrant Fade */
+.home-view, .search-view, .settings-view, .liked-view, .provider-view, .profile-view {
+  padding: 40px;
+  animation: soulFadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+@keyframes soulFadeIn {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); filter: blur(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+/* Legacy Home Elements */
+.legacy-home .legacy-welcome {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.legacy-home .legacy-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
+
+.legacy-service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.legacy-service-card {
+  background: var(--bg-surface);
+  border: var(--border-std);
+  padding: 24px;
+  border-radius: var(--radius-std);
+  cursor: pointer;
+}
+
+.legacy-service-card .card-header {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.legacy-service-card .card-status {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}

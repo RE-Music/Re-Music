@@ -127,38 +127,44 @@ function App() {
         const api = (window as any).electronAPI;
 
         if (api && typeof api.invoke === 'function') {
+          // 1. Fetch critical data first
           providers = await api.invoke('get-providers').catch(() => []);
           settings = await api.invoke('get-settings').catch(() => ({}));
           authStatus = await api.invoke('check-auth').catch(() => ({}));
+          
+          // 2. Set critical state immediately to make app usable
+          setProviders(providers);
+          setAuthStatus(authStatus);
+          
+          if (settings.theme) setTheme(settings.theme);
+          if (settings.language) setLanguage(settings.language);
+          if (settings.profileName) setProfileName(settings.profileName);
+          if (settings.avatarUrl) setAvatarUrl(settings.avatarUrl);
+          if (settings.localPlaylists) setLocalPlaylists(settings.localPlaylists);
+          if (typeof settings.volume === 'number') {
+             usePlayerStore.getState().setVolume(settings.volume);
+          }
+
+          // 3. Mark initialized so splash can fade out
+          setIsInitialized(true);
+
+          // 4. Background services
+          try {
+            await useEqStore.getState().init();
+            await useAchievementStore.getState().init();
+          } catch (e) {
+            console.warn('Background services initialization failed:', e);
+          }
+
+          // 5. Finally fetch slow data (liked tracks) in background
           likedTracks = await api.invoke('get-liked-tracks').catch(() => []);
+          setLikedTracks(likedTracks.map((t: any) => t.id));
         } else {
           console.error('[App] Royale: window.electronAPI.invoke is missing during init phase');
+          setIsInitialized(true);
         }
-        
-        // Optional: EQ and other non-critical services
-        try {
-          await useEqStore.getState().init();
-          await useAchievementStore.getState().init();
-        } catch (e) {
-          console.warn('Background services initialization failed:', e);
-        }
-
-        setProviders(providers);
-        setAuthStatus(authStatus);
-        setLikedTracks(likedTracks.map((t: any) => t.id));
-        
-        if (settings.theme) setTheme(settings.theme);
-        if (settings.language) setLanguage(settings.language);
-        if (settings.profileName) setProfileName(settings.profileName);
-        if (settings.avatarUrl) setAvatarUrl(settings.avatarUrl);
-        if (settings.localPlaylists) setLocalPlaylists(settings.localPlaylists);
-        if (typeof settings.volume === 'number') {
-           usePlayerStore.getState().setVolume(settings.volume);
-        }
-        setIsInitialized(true);
       } catch (error) {
         console.error('Failed to initialize app:', error);
-        // Even on error, we should probably let the user in
         setIsInitialized(true);
       }
     }

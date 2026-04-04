@@ -1,6 +1,6 @@
 # RE:Music Release Preparation Script (PowerShell) - MANUAL SIGNING COMPATIBLE
 
-$version = "1.1.0"
+$version = "1.1.1"
 $releaseDir = "git-release"
 
 Write-Host "--- Start Release Preparation v$version ---" -ForegroundColor Cyan
@@ -27,7 +27,7 @@ Copy-Item $msiSig.FullName "$releaseDir/"
 $sigContent = Get-Content $msiSig.FullName -Raw
 $updateJson = @{
     version = $version
-    notes = "Release v$($version): Added token encryption and My Wave implementation."
+    notes = "Release v$($version): Фикс авторизации Яндекс/YouTube и улучшение инициализации."
     pub_date = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
     platforms = @{
         "windows-x86_64" = @{
@@ -37,7 +37,8 @@ $updateJson = @{
     }
 }
 
-$updateJson | ConvertTo-Json -Depth 10 | Out-File "$releaseDir/update.json" -Encoding utf8
+$json = $updateJson | ConvertTo-Json -Depth 10
+[System.IO.File]::WriteAllText("$releaseDir/update.json", $json, (New-Object System.Text.UTF8Encoding($false)))
 
 Write-Host "`nRelease folder '$releaseDir' is ready!" -ForegroundColor Green
 Write-Host "Next steps:"

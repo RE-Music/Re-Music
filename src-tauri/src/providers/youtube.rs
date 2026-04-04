@@ -831,12 +831,6 @@ impl MusicProvider for YouTubeProvider {
     }
 
     async fn auth(&self, handle: AppHandle) -> Result<bool, String> {
-        // Close any existing auth window
-        if let Some(existing) = handle.get_webview_window("youtube-auth") {
-            let _ = existing.close();
-            tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
-        }
-
         let (tx, rx) = tokio::sync::oneshot::channel();
         let tx = Arc::new(tokio::sync::Mutex::new(Some(tx)));
         
