@@ -1,0 +1,1 @@
+const token = localStorage.getItem('spotify_token_or_something');

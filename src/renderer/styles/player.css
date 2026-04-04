@@ -1,0 +1,255 @@
+.player-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  transition: all var(--transition-smooth);
+  background: linear-gradient(90deg, var(--bg-panel) 0%, var(--bg-surface) 100%);
+  border-top: var(--border-std);
+  position: relative;
+  z-index: 10;
+  padding: 0 40px;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Soul: Decorative operational glow at the top */
+.player-bar::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 10%; width: 80%; height: 1px;
+  background: var(--accent-gradient);
+  box-shadow: 0 0 10px var(--accent-glow);
+  opacity: 0.5;
+}
+
+/* Track Info section */
+.player-track-info {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow: visible;
+}
+
+.player-menu-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.track-cover {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background-color: var(--bg-surface);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition-smooth);
+}
+
+.track-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.track-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.5px;
+}
+
+.track-artist {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Control section */
+.player-controls-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.control-btn {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.control-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.1);
+}
+
+.control-btn.active {
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.control-btn.primary {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.control-btn.primary:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+/* Soul: Timeline as an Electric Line */
+.player-timeline {
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.time {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 45px;
+  letter-spacing: 1px;
+}
+
+.timeline-bar, .volume-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.timeline-bar::before, .volume-bar::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 20px);
+  z-index: 1;
+}
+
+.timeline-progress, .volume-progress {
+  height: 100%;
+  background: var(--accent-gradient);
+  position: relative;
+  border-radius: inherit;
+  box-shadow: 0 0 10px var(--accent-glow);
+  overflow: hidden;
+}
+
+.timeline-progress::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: sweep 2s infinite linear;
+}
+
+
+
+/* Extra Controls section */
+.player-extras {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+}
+
+.volume-bar {
+  width: 120px;
+  flex: none;
+}
+
+.m-left {
+  margin-left: 12px;
+}
+/* Old-Dark Player Overrides (100% Legacy) */
+.theme-old-dark .player-bar {
+  background: var(--bg-panel);
+  box-shadow: none;
+}
+
+.theme-old-dark .player-bar::before {
+  display: none;
+}
+
+.theme-old-dark .track-title,
+.theme-old-dark .time {
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.theme-old-dark .control-btn:hover {
+  background: none;
+  transform: none;
+  color: #fff;
+}
+
+.theme-old-dark .control-btn.active {
+  filter: none;
+  color: #fff;
+}
+
+.theme-old-dark .control-btn.primary {
+  box-shadow: none;
+}
+
+.theme-old-dark .control-btn.primary:hover {
+  transform: scale(1.05);
+  box-shadow: none;
+}
+
+.theme-old-dark .timeline-progress,
+.theme-old-dark .volume-progress {
+  background: #fff;
+  box-shadow: none;
+}
+
+.theme-old-dark .timeline-progress::after {
+  display: none;
+}

@@ -1,0 +1,125 @@
+.lyrics-overlay {
+  position: fixed;
+  inset: 0;
+  bottom: 90px; /* Exact PlayerBar height */
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  animation: fadeIn 0.3s ease-out;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Мягкая тень, чтобы не перекрывать нижнюю панель */
+}
+
+.lyrics-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  filter: blur(80px) brightness(0.4);
+  opacity: 0.6;
+}
+
+.lyrics-header {
+  margin-bottom: 40px;
+  text-align: center;
+  z-index: 1;
+}
+
+.lyrics-header h2 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 800;
+}
+
+.lyrics-header p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 4px 0 0 0;
+}
+
+.lyrics-container {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+  padding: 100px 0 200px 0;
+}
+
+.lyrics-container::-webkit-scrollbar {
+  display: none;
+}
+
+.lyrics-line {
+  font-size: 28px;
+  font-weight: 700;
+  padding: 16px 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.25;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+.lyrics-line:hover {
+  opacity: 0.5;
+}
+
+.lyrics-line.active {
+  opacity: 1;
+  font-size: 38px;
+  color: #fff;
+  text-shadow: 0 0 25px rgba(0, 242, 255, 0.5);
+  transform: scale(1.05);
+  /* Karaoke Effect */
+  background: linear-gradient(to right, var(--accent-color) var(--progress, 0%), #fff var(--progress, 0%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.4s ease, font-size 0.4s ease;
+}
+
+.lyrics-empty {
+  font-size: 20px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.lyrics-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.lyrics-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

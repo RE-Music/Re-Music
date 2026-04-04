@@ -1,0 +1,252 @@
+.poster-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(15px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.theme-old-dark .poster-overlay {
+  backdrop-filter: none;
+}
+
+.poster-modal {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+  border: var(--border-std);
+  position: relative;
+}
+
+.poster-card-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* THE SHARED VISUAL STYLE */
+.poster-card {
+  width: 380px;
+  height: 500px;
+  background: var(--bg-base);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  box-sizing: border-box;
+  color: var(--text-primary);
+  font-family: inherit;
+  border: var(--border-std);
+}
+
+.theme-tech-dark .poster-card {
+  font-family: 'Outfit', sans-serif;
+  border: 1px solid var(--accent-glow);
+  box-shadow: 0 0 30px var(--accent-glow-deep);
+}
+
+.poster-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(60px) brightness(0.4);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.theme-old-dark .poster-card-bg {
+  display: none;
+}
+
+.poster-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.poster-artwork {
+  width: 280px;
+  height: 280px;
+  border-radius: var(--radius-std);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: var(--border-std);
+}
+
+.theme-old-dark .poster-artwork {
+  border: 4px solid #fff;
+  box-shadow: none;
+}
+
+.poster-info {
+  text-align: center;
+  width: 100%;
+}
+
+.poster-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.5px;
+}
+
+.poster-artist {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 6px 0 0 0;
+  font-weight: 500;
+}
+
+.poster-footer {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.poster-qr-container {
+  background: #fff;
+  padding: 8px;
+  border-radius: var(--radius-std);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #fff;
+}
+
+.poster-nexus-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.poster-code-pill {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: var(--border-std);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.theme-old-dark .poster-code-pill {
+  backdrop-filter: none;
+  background: #000;
+}
+
+.poster-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.poster-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius-std);
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all var(--transition-smooth);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.poster-btn-primary {
+  background: var(--accent-gradient);
+  background-color: var(--accent-color);
+  color: #000;
+  box-shadow: 0 10px 20px var(--accent-glow-deep);
+}
+
+.theme-old-dark .poster-btn-primary {
+  background: #fff;
+  color: #000;
+}
+
+.poster-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px var(--accent-glow);
+}
+
+.poster-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: var(--border-std);
+}
+
+.poster-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.poster-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: all var(--transition-fast);
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+.poster-close-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.spinner-sm {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "enables the default permissions",
+  "windows": [
+    "*"
+  ],
+  "permissions": [
+    "core:default",
+    "dialog:default",
+    "dialog:allow-open",
+    "core:tray:default",
+    "core:menu:default",
+    "core:event:allow-emit",
+    "core:event:allow-listen",
+    "updater:default",
+    "process:allow-restart"
+  ],
+  "remote": {
+    "urls": [
+      "http://127.0.0.1:5188/",
+      "http://localhost:5188/",
+      "http://localhost:5173/",
+      "http://127.0.0.1:5173/"
+    ]
+  }
+}
