@@ -1,11 +1,11 @@
 ﻿{
     "platforms":  {
                       "windows-x86_64":  {
-                                             "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUUWNxWmNaTnlNdHZLQ1k1WGJVdDBiTUFXZG5HbzE4YXBha2x5UHE0WUFOS1NjVlRpN01RTmlycXJVcHRkTUl4VVoxaFpaL3U1aERhK1dJbGNMdjBvaG00UnpxYmE5VFFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc1MzIzNDAxCWZpbGU6UkUtTXVzaWNfMS4xLjBfeDY0X2VuLVVTLm1zaQp0SDZPcXZRVnNtUW1RMDl4dnRjOG81di9YQUZhT1lqOTY5Wnhxeks5WlhMZzZ4OVJmT2tsNk1ySFpZcFRkcDhUMmlvaGsrNE1JUk9xckRHeitVckZBdz09Cg==",
-                                             "url":  "https://github.com/RE-Music/Re-Music/releases/download/v1.1.0/RE-Music_1.1.0_x64_en-US.msi"
+                                             "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUUWNxWmNaTnlNdHMrd1lDYXgzRXVaZGVwQk9qRnJsQmVFdnpRZld6TmczaHJxRVFMVUN3YjR3c3UxbUMwMDRuTUVnUUNUNVBNZnJqUmFZRGtFbk10bTVxMy9OWmJNR2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc1MzI1NTYzCWZpbGU6UkUtTXVzaWNfMS4xLjFfeDY0X2VuLVVTLm1zaQo0Y3JvZDRlVjVDMVFabW1tREUxcjhUcStDOUVkOWt2WE1xby9wUnM4dEMvanNkaHVUb3pVVytWdmpGSjdkTkFKUHZVNmpsWHZyWFFCSWxLcTJyZDBCZz09Cg==",
+                                             "url":  "https://github.com/RE-Music/Re-Music/releases/download/v1.1.1/RE-Music_1.1.1_x64_en-US.msi"
                                          }
                   },
-    "pub_date":  "2026-04-04T20:23:37Z",
-    "version":  "1.1.0",
-    "notes":  "Release v1.1.0: Added token encryption and My Wave implementation."
+    "pub_date":  "2026-04-04T21:00:03Z",
+    "version":  "1.1.1",
+    "notes":  "Release v1.1.1: Р¤РёРєСЃ Р°РІС‚РѕСЂРёР·Р°С†РёРё РЇРЅРґРµРєСЃ/YouTube Рё СѓР»СѓС‡С€РµРЅРёРµ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё."
 }
