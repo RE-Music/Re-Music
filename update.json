@@ -4,7 +4,7 @@
   "pub_date": "2026-04-05T00:55:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNHhCRlZFcE9STDgyT094TEpGK3pESWdZQmhhVXV4VE53cTZCV1BUOEJYazdDL3dzZnNhYjVIeXdxblZXZDVIYUVwQVNDa2FMQ2hNMllOMllxbTJ4Ny9sQmNlejNzTndNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc1MzUwNTE3CWZpbGU6UkUtTXVzaWNfMS4xLjVfeDY0X2VuLVVTLm1zaQorb1ZSckpYbldodkZjRjQ0VGVTMnF4N05ETFY4NThMMGVpWWgrWlFyVmd0Y3B2ZG91UWtPUWh4VTI1VDQydFIxeEUxTVc3dDV3Ui95bXZmbEhzZlNEZz09Cg==",
+      "signature": "untrusted comment: signature from tauri secret key\nRUQ4xBFVEpORL82OOxLJF+zDIgYBhaUuxTNwq6BWPT8BXk7C/wsfsab5HywqnVWd5HaEpASCkaLChM2YN2Yqm2x7/lBcez3sNwM=\ntrusted comment: timestamp:1775350517\tfile:RE-Music_1.1.5_x64_en-US.msi\n+oVRrJXnWhvFcF44TeS2qx7NDLV858L0eiYh+ZQrVgtcpvdouQkOQhxU25T42tR1xE1MW7t5wR/ymvflHsfSDg==",
       "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.5/RE-Music_1.1.5_x64_en-US.msi"
     }
   }
