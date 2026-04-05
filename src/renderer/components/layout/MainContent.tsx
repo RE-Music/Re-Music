@@ -1357,10 +1357,10 @@ export const MainContent: React.FC = () => {
           <div className="tab-content-faded">
             {profileTab === 'overview' ? (
               <div className="overview-tab">
-                <div className="profile-hero premium-view">
+                <div className="profile-hero premium-view glass-panel" style={{ padding: '40px', borderRadius: '24px', position: 'relative', overflow: 'hidden' }}>
                   <div className="mesh-gradient-bg"></div>
                   <div className="tech-grid"></div>
-                  <div className="profile-avatar-large" onClick={handleAvatarClick} style={{ cursor: 'pointer', overflow: 'hidden' }}>
+                  <div className="profile-avatar-large" onClick={handleAvatarClick} style={{ cursor: 'pointer', overflow: 'hidden', zIndex: 2 }}>
                     {avatarUrl ? (
                       <img src={avatarUrl} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     ) : (
@@ -1370,15 +1370,11 @@ export const MainContent: React.FC = () => {
                       <Plus size={24} color="white" />
                     </div>
                   </div>
-                  <div className="profile-info-large">
-                    <div className="premium-badge">Nexus Prime Member</div>
-                    <h1>Твоя Личность</h1>
+                  <div className="profile-info-large" style={{ zIndex: 2 }}>
+                    <h1 style={{ fontSize: '3rem', margin: '0 0 8px 0' }}>{profileName || 'Anonymous'}</h1>
                     <div className="profile-meta">
-                      <span className="user-nickname">
-                        {Object.entries(authStatus).find(([id, connected]) => connected && id === 'spotify') ? 'Spotify Enthusiast' : 
-                         Object.entries(authStatus).find(([id, connected]) => connected && id === 'yandex') ? 'Yandex Voyager' : 'Nexus Nomad'}
-                      </span>
-                      <span className="status-dot-active">Active Protocol</span>
+                      <span className="user-nickname">Локальный Профиль</span>
+                      <span className="status-dot-active">Active</span>
                     </div>
                   </div>
                 </div>
@@ -1394,7 +1390,7 @@ export const MainContent: React.FC = () => {
                   <div className="stat-card hud-box">
                     <div className="stat-info">
                       <span className="stat-label">Подключено сервисов: </span>
-                      <span className="stat-value">{Object.values(authStatus).filter(Boolean).length} / {providers.length}</span>
+                      <span className="stat-value">{providers.filter(p => authStatus[p.id]).length} / {providers.length}</span>
                     </div>
                     <Activity size={32} color="var(--accent-color)" opacity={0.3} />
                   </div>

@@ -3,6 +3,7 @@ import { ShieldCheck, Info, Languages, Trash2, Sun, ChevronDown, Zap } from 'luc
 import { useAppStore } from '../../store/useAppStore';
 import type { Language, Theme } from '../../store/useAppStore';
 import { getTranslation } from '../../utils/i18n';
+import packageJson from '../../../../package.json';
 
 interface Settings {
   theme: Theme;
@@ -278,7 +279,7 @@ export const SettingsView = () => {
           <div className="about-info">
             <div className="info-row">
               <span>{t.settings?.version || 'Version'}</span>
-              <span>1.0.9-alpha</span>
+              <span>{packageJson.version}</span>
             </div>
             <div className="info-row">
               <span>{t.settings?.developers || 'Developers'}</span>
