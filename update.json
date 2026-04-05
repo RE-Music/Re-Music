@@ -1,11 +1,11 @@
 {
     "platforms":  {
                       "windows-x86_64":  {
-                                             "signature": "RUTQcqZcZNzMtmbBOQVIKEVuUnPx37HOOpBa7CxQ2jwpAMn50VD7GDZHCz3So7qkbjHJoyXQUqGIIAWJrqkO/ojIxXQqPzm3SqEwA=",
+                                             "signature":  "ZFc1MGNuVnpkR1ZrSUdOdmJXMWxiblE2SUhOcFoyNWhkSFZ5WlNCbWNtOXRJSFJoZFhKcElITmxZM0psZENCclpYa0tVbFZVVVdOeFdtTmFUbmxOZEcxaVFrOVJWa2xMUlZaMVZXNVFlRE0zU0U5dlQzQmFOME40VVRKcWQzQkJUVzQxTUZaRU4wZEVXa2hEWXpOVGJ6ZHhhMkpxU0VwdmVGRlZjVWRKU1VGWFNuSnhhMDh2YjJwSmVGRnhVSHB0TTFOeFJYZEJQUXAwY25WemRHVmtJR052YlcxbGJuUTZJSFJwYldWemRHRnRjRG94TnpjMU16VXpNakV6Q1dacGJHVTZVa1V0VFhWemFXTmZNUzR4TGpZdE1GOTROalJmWlc0dFZWTXViWE5wQ2xFM04wY3dTa1IwYjNreFNVa3hkMmxLTUVaWVRHbDFWV0l5VTBWTFZtRnlSRXRUVHpFd05EY3hPSGM1TTBRNVVsQnlOMGR3Y25OeFZHWTBURXhHY2pVd2MxaHNRWGQzV0hVMlNDc3pZekV3Y1RKbFJrSm5QVDBL",
                                              "url":  "https://github.com/RE-Music/Re-Music/releases/download/v1.1.6-alpha/RE-Music_1.1.6-0_x64_en-US.msi"
                                          }
                   },
-    "pub_date":  "2026-04-05T04:57:43Z",
+    "pub_date":  "2026-04-05T05:04:54Z",
     "version":  "1.1.6-0",
     "notes":  "Release v1.1.6-alpha: UI/UX polish across all themes, removed debug labels, and fixed vibeGifMode persistence issue."
 }

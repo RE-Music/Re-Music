@@ -23,9 +23,9 @@ if (-not (Test-Path $releaseDir)) { mkdir $releaseDir }
 Copy-Item $msi.FullName "$releaseDir/"
 Copy-Item $msiSig.FullName "$releaseDir/"
 
-# Generate update.json (Raw strings for Tauri v2)
-$sigLines = [System.IO.File]::ReadAllLines($msiSig.FullName)
-$sigBase64 = $sigLines[1].Trim()
+# Generate update.json (Double-Encoded Base64 for Tauri v2)
+$sigText = Get-Content $msiSig.FullName -Raw
+$sigBase64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($sigText))
 
 $updateJson = @{
     version = $version
