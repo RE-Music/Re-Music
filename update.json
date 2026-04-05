@@ -1,11 +1,11 @@
 {
     "platforms":  {
                       "windows-x86_64":  {
-                                             "signature":  "ZFc1MGNuVnpkR1ZrSUdOdmJXMWxiblE2SUhOcFoyNWhkSFZ5WlNCbWNtOXRJSFJoZFhKcElITmxZM0psZENCclpYa0tVbFZVVVdOeFdtTmFUbmxOZEcxaVFrOVJWa2xMUlZaMVZXNVFlRE0zU0U5dlQzQmFOME40VVRKcWQzQkJUVzQxTUZaRU4wZEVXa2hEWXpOVGJ6ZHhhMkpxU0VwdmVGRlZjVWRKU1VGWFNuSnhhMDh2YjJwSmVGRnhVSHB0TTFOeFJYZEJQUXAwY25WemRHVmtJR052YlcxbGJuUTZJSFJwYldWemRHRnRjRG94TnpjMU16VXpNakV6Q1dacGJHVTZVa1V0VFhWemFXTmZNUzR4TGpZdE1GOTROalJmWlc0dFZWTXViWE5wQ2xFM04wY3dTa1IwYjNreFNVa3hkMmxLTUVaWVRHbDFWV0l5VTBWTFZtRnlSRXRUVHpFd05EY3hPSGM1TTBRNVVsQnlOMGR3Y25OeFZHWTBURXhHY2pVd2MxaHNRWGQzV0hVMlNDc3pZekV3Y1RKbFJrSm5QVDBL",
+                                             "signature":  "ZFc1MGNuVnpkR1ZrSUdOdmJXMWxiblE2SUhOcFoyNWhkSFZ5WlNCbWNtOXRJSFJoZFhKcElITmxZM0psZENCclpYa0tVbFZVVVdOeFdtTmFUbmxOZEhOTEszQmhhR1E0UVdWNWNVMDRhMUowTUdVeVZFTm5WVVZpZVRWelNUSjVabWxPTmxGdFZtSm1RbXB3TVZSdWEwTjRaM2MwT0VKT1RWSlFOR2RoYlRVemFsSnJLMGswT1VFNFZFRm5TV1pyZEZadFJsRnpQUXAwY25WemRHVmtJR052YlcxbGJuUTZJSFJwYldWemRHRnRjRG94TnpjMU16VTFNVEUwQ1dacGJHVTZVa1V0VFhWemFXTmZNUzR4TGpZdE1GOTROalJmWlc0dFZWTXViWE5wQ21aNmQwWjJMMDlHWlRoYU16ZEhaMVJ2WjBKV2VGQjRXV1ZaUzFGMGEySjRNeklyV0NzNFZ6RmxkbkV3YzFoelNsYzBNVVpUT1hOclRXdHROMnRoT0hKb1NYWkVTVEZRTTJSVGFqTjBOblJtYUVSdlIwSjNQVDBL",
                                              "url":  "https://github.com/RE-Music/Re-Music/releases/download/v1.1.6-alpha/RE-Music_1.1.6-0_x64_en-US.msi"
                                          }
                   },
-    "pub_date":  "2026-04-05T05:04:54Z",
+    "pub_date":  "2026-04-05T05:12:03Z",
     "version":  "1.1.6-0",
     "notes":  "Release v1.1.6-alpha: UI/UX polish across all themes, removed debug labels, and fixed vibeGifMode persistence issue."
 }
