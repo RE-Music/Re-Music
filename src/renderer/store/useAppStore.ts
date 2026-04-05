@@ -20,6 +20,19 @@ export interface PromptConfig {
   cancelText?: string;
 }
 
+export interface ContextMenuItem {
+  label: string;
+  icon?: any;
+  onClick: () => void;
+  variant?: 'default' | 'danger';
+}
+
+export interface ContextMenuConfig {
+  x: number;
+  y: number;
+  items: ContextMenuItem[];
+}
+
 interface AppState {
   activeView: ViewType;
   activeProviderId: string | null;
@@ -44,6 +57,7 @@ interface AppState {
   visitedViews: Set<string>;
   isPosterModalOpen: boolean;
   posterTrack: Track | null;
+  contextMenu: ContextMenuConfig | null;
   
   // Actions
   showToast: (message: string) => void;
@@ -67,6 +81,8 @@ interface AppState {
   closePrompt: () => void;
   setImportModalOpen: (open: boolean) => void;
   setPosterModalOpen: (open: boolean, track?: Track | null) => void;
+  showContextMenu: (config: ContextMenuConfig) => void;
+  closeContextMenu: () => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -92,6 +108,7 @@ export const useAppStore = create<AppState>((set) => ({
   visitedViews: new Set(),
   isPosterModalOpen: false,
   posterTrack: null,
+  contextMenu: null,
 
   setActiveView: (view: ViewType, providerId: string | null = null) => 
     set((state) => {
@@ -184,4 +201,6 @@ export const useAppStore = create<AppState>((set) => ({
   },
   hideToast: () => set({ toast: null }),
   setPosterModalOpen: (open: boolean, track: Track | null = null) => set({ isPosterModalOpen: open, posterTrack: track }),
+  showContextMenu: (config) => set({ contextMenu: config }),
+  closeContextMenu: () => set({ contextMenu: null }),
 }));

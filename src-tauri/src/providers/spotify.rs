@@ -47,7 +47,7 @@ impl SpotifyProvider {
         let refresh_token = self.auth_manager.get_token("spotify_refresh").await
             .ok_or_else(|| "No refresh token found. Please relogin.".to_string())?;
         
-        let client_id = "7e458b019229459ba73be9671a018eb7";
+        let client_id = "42935c9cccad4ee9a7b7ec96e9793420";
         let params = [
             ("grant_type", "refresh_token"),
             ("refresh_token", &refresh_token),
@@ -510,7 +510,7 @@ impl MusicProvider for SpotifyProvider {
         use tauri::WebviewWindowBuilder;
         use tauri::WebviewUrl;
 
-        let client_id = "7e458b019229459ba73be9671a018eb7";
+        let client_id = "42935c9cccad4ee9a7b7ec96e9793420";
         let scopes = "user-read-private streaming user-library-read user-library-modify playlist-read-private playlist-modify-private playlist-modify-public user-read-playback-state user-modify-playback-state user-top-read user-read-recently-played";
         let redirect_uri = "https://www.google.com/";
 

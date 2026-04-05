@@ -1,5 +1,5 @@
 # RE:Music Release Preparation Script (PowerShell) - MANUAL SIGNING COMPATIBLE
-$version = "1.1.1"
+$version = "1.1.2"
 $releaseDir = "git-release"
 
 Write-Host "--- Start Release Preparation v$version ---" -ForegroundColor Cyan
@@ -7,8 +7,8 @@ Write-Host "--- Start Release Preparation v$version ---" -ForegroundColor Cyan
 if (-not (Test-Path $releaseDir)) { New-Object -ItemType Directory -Path $releaseDir }
 
 # Locate artifacts
-$msi = Get-ChildItem "src-tauri/target/release/bundle/msi/*.msi" | Select-Object -First 1
-$msiSig = Get-ChildItem "src-tauri/target/release/bundle/msi/*.msi.sig" | Select-Object -First 1
+$msi = Get-ChildItem "src-tauri\target\release\bundle\msi\*.msi" | Select-Object -First 1
+$msiSig = Get-ChildItem "src-tauri\target\release\bundle\msi\*.msi.sig" | Select-Object -First 1
 
 if (-not $msi -or -not $msiSig) {
     Write-Host "ERROR: MSI or .msi.sig files not found" -ForegroundColor Red

@@ -940,7 +940,7 @@ pub fn run() {
     .plugin({
         println!("[DEBUG] Initializing Updater Plugin with hardcoded key...");
         tauri_plugin_updater::Builder::new()
-            .pubkey("RWS9jTw3/6YRZvGPdgKvt6obZkgvPZPoQLzqAFwVgSAEkhYWQ+crSK0A")
+            .pubkey("RWQ4xBFVEpORL6v+hnBxEK/t33CgDSZUOn0ZwMNjr9zGt7rHM/4/NkU5")
             .build()
     })
     .plugin(tauri_plugin_process::init())

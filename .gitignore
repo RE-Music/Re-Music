@@ -32,3 +32,6 @@ dist-electron
 *.njsproj
 *.sln
 *.sw?
+
+# Keys
+src-tauri/keys/*.key

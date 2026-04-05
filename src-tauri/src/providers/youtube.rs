@@ -881,27 +881,25 @@ impl MusicProvider for YouTubeProvider {
                     
                     // Check if we're on music.youtube.com (login succeeded)
                     if let Ok(current_url) = w.url() {
-                        if current_url.as_str().contains("music.youtube.com") {
-                            // Capture ALL available cookies — no name checks
-                            // If cookies are all HttpOnly, fall back to ytcfg page data
+                        // FIX: check the actual host, not just string containment (prevents early capture on login page with 'continue' param)
+                        if current_url.host_str() == Some("music.youtube.com") {
                             let js_trap = r#"
                                 (() => {
                                     if (window.location.hash.includes('yt_cookies=')) return;
                                     let data = document.cookie;
-                                    if (!data || data.length < 10) {
-                                        // Fallback: try to get SAPISID from ytcfg (embedded in page JS)
+                                    
+                                    // FIX: Validating critical cookies before signaling success
+                                    const hasSID = data.includes("SAPISID=") || data.includes("__Secure-3PAPISID=");
+                                    if (!hasSID) {
+                                        // Fallback: strictly check ytcfg for session hints as a secondary validator
                                         try {
-                                            if (typeof ytcfg !== 'undefined') {
-                                                const pairs = [];
-                                                const id = ytcfg.get && ytcfg.get('DELEGATED_SESSION_ID');
-                                                if (id) pairs.push('SESSION_ID=' + id);
-                                                const dsid = ytcfg.get && ytcfg.get('DATASYNC_ID');
-                                                if (dsid) pairs.push('DATASYNC_ID=' + dsid);
-                                                if (pairs.length > 0) data = pairs.join('; ');
+                                            if (typeof ytcfg === 'undefined' || (!ytcfg.get('DELEGATED_SESSION_ID') && !ytcfg.get('DATASYNC_ID'))) {
+                                                return; // Too early, keep the window open for the user
                                             }
-                                        } catch(e) {}
+                                        } catch(e) { return; }
                                     }
-                                    if (data && data.length > 0) {
+                                    
+                                    if (data && data.length > 20) {
                                         window.location.hash = 'yt_cookies=' + encodeURIComponent(data);
                                     }
                                 })()

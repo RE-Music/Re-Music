@@ -139,6 +139,7 @@ export const MainContent: React.FC = () => {
     progressMs,
     spotifyDeviceId
   } = usePlayerStore();
+  const { showContextMenu } = useAppStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Track[]>([]);
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
@@ -1012,7 +1013,30 @@ export const MainContent: React.FC = () => {
               <div className="playlist-grid stagger-in delay-2" style={{ marginTop: '16px', marginBottom: '40px' }}>
                 {localPlaylists.length > 0 ? (
                   localPlaylists.map(playlist => (
-                      <div key={playlist.id} className="playlist-card glass-panel" onClick={() => loadPlaylistTracks(playlist)}>
+                      <div key={playlist.id} className="playlist-card glass-panel" 
+                        onClick={() => loadPlaylistTracks(playlist)}
+                        onContextMenu={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          showContextMenu({
+                            x: e.clientX,
+                            y: e.clientY,
+                            items: [
+                              { label: 'Открыть', icon: Play, onClick: () => loadPlaylistTracks(playlist) },
+                              { label: 'Перемешать', icon: Zap, onClick: () => {
+                                 // Logic for shuffle play if needed
+                                 loadPlaylistTracks(playlist).then(() => {
+                                    // toggle shuffle?
+                                 });
+                              }},
+                              { label: 'Поделиться кодом', icon: Share, onClick: () => handleShare('playlist', playlist) },
+                              { label: 'Удалить коллекцию', icon: Trash2, variant: 'danger', onClick: () => {
+                                 deleteLocalPlaylist(playlist.id, e as any);
+                              }},
+                            ]
+                          });
+                        }}
+                      >
                         <div className="playlist-cover">
                           <div className="local-playlist-icon" style={{ 
                             width: '100%', 
@@ -1157,6 +1181,27 @@ export const MainContent: React.FC = () => {
                     key={`${track.provider}:${track.id}`} 
                     className={`track-item ${showPlaylistMenu === `${track.provider}:${track.id}` ? 'active-menu' : ''} ${currentTrack?.id === track.id ? 'active' : ''}`} 
                     onClick={() => handlePlay(track, searchResults)}
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      showContextMenu({
+                        x: e.clientX,
+                        y: e.clientY,
+                        items: [
+                          { label: 'Играть сейчас', icon: Play, onClick: () => handlePlay(track, searchResults) },
+                          { label: likedTracks.has(track.id) ? 'Убрать из любимых' : 'Добавить в любимые', icon: Heart, onClick: () => handleLike(e as any, track) },
+                          { label: 'Добавить в плейлист', icon: Plus, onClick: () => {
+                             const trackKey = `${track.provider}:${track.id}`;
+                             setShowPlaylistMenu(trackKey);
+                             setIsPlaylistsLoading(true);
+                             window.electronAPI.invoke('get-playlists', track.provider)
+                               .then(setPlaylists)
+                               .finally(() => setIsPlaylistsLoading(false));
+                          }},
+                          { label: 'Поделиться', icon: Share, onClick: () => handleShare('track', track) },
+                        ]
+                      });
+                    }}
                   >
                     <div className="track-play-icon">
                       {currentTrack?.id === track.id ? (
@@ -1466,6 +1511,24 @@ export const MainContent: React.FC = () => {
                         key={`${track.provider}:${track.id}:${index}`} 
                         className={`track-item ${showPlaylistMenu === `${track.provider}:${track.id}` ? 'active-menu' : ''} ${currentTrack?.id === track.id ? 'active' : ''}`} 
                         onClick={() => handlePlay(track, playlistTracks)}
+                        onContextMenu={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          showContextMenu({
+                            x: e.clientX,
+                            y: e.clientY,
+                            items: [
+                              { label: 'Играть сейчас', icon: Play, onClick: () => handlePlay(track, playlistTracks) },
+                              { label: likedTracks.has(track.id) ? 'Убрать из любимых' : 'Добавить в любимые', icon: Heart, onClick: () => handleLike(e as any, track) },
+                              { label: 'Поделиться', icon: Share, onClick: () => handleShare('track', track) },
+                              { label: 'Удалить из коллекции', icon: Trash2, variant: 'danger', onClick: () => {
+                                 // Logic to remove from local playlist if applicable
+                                 // (Simplified for now)
+                                 showToast("Функция удаления в разработке");
+                              }},
+                            ]
+                          });
+                        }}
                       >
                         <div className="track-play-icon">
                           {currentTrack?.id === track.id ? (
@@ -1719,6 +1782,28 @@ export const MainContent: React.FC = () => {
                     key={`${track.provider}:${track.id}`} 
                     className={`track-item ${showPlaylistMenu === `${track.provider}:${track.id}` ? 'active-menu' : ''} ${currentTrack?.id === track.id ? 'active' : ''}`} 
                     onClick={() => handlePlay(track, filteredLiked)}
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      showContextMenu({
+                        x: e.clientX,
+                        y: e.clientY,
+                        items: [
+                          { label: 'Играть сейчас', icon: Play, onClick: () => handlePlay(track, filteredLiked) },
+                          { label: 'Убрать из любимых', icon: Minus, variant: 'danger', onClick: () => handleLike(e as any, track) },
+                          { label: 'Добавить в плейлист', icon: Plus, onClick: () => {
+                             const trackKey = `${track.provider}:${track.id}`;
+                             setShowPlaylistMenu(trackKey);
+                             setIsPlaylistsLoading(true);
+                             window.electronAPI.invoke('get-playlists', track.provider)
+                               .then(setPlaylists)
+                               .finally(() => setIsPlaylistsLoading(false));
+                          }},
+                          { label: 'Запустить волну', icon: Activity, onClick: () => handleStartWave(track) },
+                          { label: 'Поделиться', icon: Share, onClick: () => handleShare('track', track) },
+                        ]
+                      });
+                    }}
                   >
                     <div className="track-play-icon">
                       {currentTrack?.id === track.id ? (
@@ -2018,7 +2103,22 @@ export const MainContent: React.FC = () => {
                 ) : playlists.length > 0 ? (
                   <div className="playlist-grid">
                     {playlists.map((playlist) => (
-                      <div key={playlist.id} className="playlist-card glass-panel" onClick={() => loadPlaylistTracks(playlist)}>
+                      <div key={playlist.id} className="playlist-card glass-panel" 
+                        onClick={() => loadPlaylistTracks(playlist)}
+                        onContextMenu={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          showContextMenu({
+                            x: e.clientX,
+                            y: e.clientY,
+                            items: [
+                              { label: 'Открыть', icon: Play, onClick: () => loadPlaylistTracks(playlist) },
+                              { label: 'Поделиться', icon: Share, onClick: () => handleShare('playlist', playlist) },
+                              { label: 'Обновить библиотеку', icon: Activity, onClick: () => loadLibrary() },
+                            ]
+                          });
+                        }}
+                      >
                         <div className="playlist-cover">
                           {playlist.coverUrl ? (
                             <img src={playlist.coverUrl} alt={playlist.title} />

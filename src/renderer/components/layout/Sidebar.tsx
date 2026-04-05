@@ -1,10 +1,10 @@
-import { Search, Settings, Home, Heart, Activity, SlidersHorizontal, User, Library, Share } from 'lucide-react';
+import { Search, Settings, Home, Heart, Activity, SlidersHorizontal, User, Library, Share, RefreshCw, Zap } from 'lucide-react';
 import { useAppStore } from '../../store/useAppStore';
 import { getTranslation } from '../../utils/i18n';
 
 export const Sidebar = () => {
   console.log('[DEBUG] Sidebar v8.1 rendering');
-  const { activeView, setActiveView, providers, authStatus, language, setImportModalOpen } = useAppStore();
+  const { activeView, setActiveView, providers, authStatus, language, setImportModalOpen, showContextMenu } = useAppStore();
   const t = getTranslation(language) as any;
 
   return (
@@ -21,6 +21,16 @@ export const Sidebar = () => {
         <button 
           className={`nav-item ${activeView === 'home' ? 'active' : ''}`}
           onClick={() => setActiveView('home')}
+          onContextMenu={(e) => {
+            e.preventDefault();
+            showContextMenu({
+              x: e.clientX,
+              y: e.clientY,
+              items: [
+                { label: 'Перезагрузить Home', icon: RefreshCw, onClick: () => setActiveView('home') },
+              ]
+            });
+          }}
         >
           <div className="nav-icon-wrapper"><Home size={18} /></div>
           <span>{t.sidebar?.home || 'GHOST_HUNTER'}</span>
@@ -93,6 +103,22 @@ export const Sidebar = () => {
                 data-provider={p.id}
                 title={p.name}
                 onClick={() => setActiveView('provider', p.id)}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  showContextMenu({
+                    x: e.clientX,
+                    y: e.clientY,
+                    items: [
+                      { label: `Открыть ${p.name}`, icon: Zap, onClick: () => setActiveView('provider', p.id) },
+                      { label: 'Переавторизоваться', icon: RefreshCw, onClick: () => {
+                         window.electronAPI.invoke('auth-provider', p.id).then((success) => {
+                           if (success) setActiveView('provider', p.id);
+                         });
+                      }},
+                    ]
+                  });
+                }}
               >
                 {p.id === 'yandex' ? 'Y' : p.name[0]}
               </div>

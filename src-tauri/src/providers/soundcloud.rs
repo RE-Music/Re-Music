@@ -392,9 +392,9 @@ impl MusicProvider for SoundCloudProvider {
                     const ok = res.ok || res.status === 201 || res.status === 204;
                     // Use nmis-proxy protocol for callback to bypass IPC restrictions
                     const status = ok ? 'ok' : 'err_' + res.status;
-                    fetch('nmis-proxy://worker-callback/{}/' + status);
+                    fetch('http://nmis-proxy.localhost/worker-callback/{}/' + status);
                 }} catch (e) {{
-                    fetch('nmis-proxy://worker-callback/{}/err_catch_' + encodeURIComponent(e.message));
+                    fetch('http://nmis-proxy.localhost/worker-callback/{}/err_catch_' + encodeURIComponent(e.message));
                 }}
             }})()
         "#, api_url, method, token, req_id, req_id);

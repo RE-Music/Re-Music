@@ -274,3 +274,99 @@ h1, h2, h3, .premium-font {
   background: #ff0000;
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
+
+/* Custom Context Menu */
+.context-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(0, 0, 0, 0.05);
+  pointer-events: auto;
+}
+
+.context-menu-card {
+  min-width: 200px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  padding: 6px;
+  user-select: none;
+}
+
+.theme-tech-dark .context-menu-card {
+  background: rgba(10, 10, 15, 0.9);
+  border-color: rgba(0, 242, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 242, 255, 0.1);
+  border-radius: 16px;
+}
+
+.theme-old-dark .context-menu-card {
+  background: #181818;
+  border: 1px solid #444;
+  border-radius: 2px;
+  backdrop-filter: none;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+}
+
+.context-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.theme-tech-dark .context-menu-item {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.3px;
+  border-radius: 10px;
+}
+
+.theme-old-dark .context-menu-item {
+  border-radius: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.context-menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.theme-tech-dark .context-menu-item:hover {
+  background: rgba(0, 242, 255, 0.15);
+  color: var(--accent-color);
+  box-shadow: inset 0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+.theme-old-dark .context-menu-item:hover {
+  background: #333;
+}
+
+.context-menu-item.danger {
+  color: #ff4b4b;
+}
+
+.context-menu-item.danger:hover {
+  background: rgba(255, 75, 75, 0.2);
+}
+
+.context-menu-item .item-icon {
+  opacity: 0.7;
+}
+
+.context-menu-item:hover .item-icon {
+  opacity: 1;
+}

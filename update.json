@@ -1,22 +1,10 @@
 {
   "version": "1.1.3",
   "notes": "Release v1.1.3: Custom theme-aware context menu, SoundCloud performance fixes (WC callback protocol), updated Spotify Client ID, and installer stabilization.",
-  "pub_date": "2026-04-05T00:00:24Z",
+  "pub_date": "2026-04-05T00:00:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtohUv0FhiItJfVMkl5IdmmTtACOuI7y6wAHWq8nf4EKNQMarQuVDHLAAwAb/CHj1MipkVCZIOfWtjQpMTLvX6AY=\ntrusted comment: timestamp:1775336402\tfile:RE-Music_1.1.3_x64_en-US.msi\nwWUbq8GnpdzQ5IBttbqoI0O2D3DrrRmX8acU/odR/8cV1wHLJlPpJPA63I6dEVUcmQ5spl3P2VVz5egxIZDuBQ==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.3/RE-Music_1.1.3_x64_en-US.msi"
-    },
-    "windows-x86_64-msi": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtohUv0FhiItJfVMkl5IdmmTtACOuI7y6wAHWq8nf4EKNQMarQuVDHLAAwAb/CHj1MipkVCZIOfWtjQpMTLvX6AY=\ntrusted comment: timestamp:1775336402\tfile:RE-Music_1.1.3_x64_en-US.msi\nwWUbq8GnpdzQ5IBttbqoI0O2D3DrrRmX8acU/odR/8cV1wHLJlPpJPA63I6dEVUcmQ5spl3P2VVz5egxIZDuBQ==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.3/RE-Music_1.1.3_x64_en-US.msi"
-    },
-    "windows-x64": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtohUv0FhiItJfVMkl5IdmmTtACOuI7y6wAHWq8nf4EKNQMarQuVDHLAAwAb/CHj1MipkVCZIOfWtjQpMTLvX6AY=\ntrusted comment: timestamp:1775336402\tfile:RE-Music_1.1.3_x64_en-US.msi\nwWUbq8GnpdzQ5IBttbqoI0O2D3DrrRmX8acU/odR/8cV1wHLJlPpJPA63I6dEVUcmQ5spl3P2VVz5egxIZDuBQ==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.3/RE-Music_1.1.3_x64_en-US.msi"
-    },
-    "windows-x64-msi": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUTQcqZcZNyMtohUv0FhiItJfVMkl5IdmmTtACOuI7y6wAHWq8nf4EKNQMarQuVDHLAAwAb/CHj1MipkVCZIOfWtjQpMTLvX6AY=\ntrusted comment: timestamp:1775336402\tfile:RE-Music_1.1.3_x64_en-US.msi\nwWUbq8GnpdzQ5IBttbqoI0O2D3DrrRmX8acU/odR/8cV1wHLJlPpJPA63I6dEVUcmQ5spl3P2VVz5egxIZDuBQ==",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNHhCRlZFcE9STDVXQnZMdkxYUHV3dmZUWXdIMThXbG5KcEVoZmZMYXhTQ3UzL1I2Q1VrdWpKbzBOOFUydlZpOGZTKys3dFJnOHVEalhjRnM3TWFUaXQraUszb0RLS2dZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc1MzQ3NjQyCWZpbGU6UkUtTXVzaWNfMS4xLjNfeDY0X2VuLVVTLm1zaQpsQzZhNGVueURwSHdtQU1aMU9jeUh6V0g1b3krR0Y0SVRGeUtMS0dmNkM3Rzh0M0NiNE1hb1hrdWE3empPUnp3TnBKYk9kV2x0L3V0TnJxWnhtNS9BZz09Cg==",
       "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.3/RE-Music_1.1.3_x64_en-US.msi"
     }
   }

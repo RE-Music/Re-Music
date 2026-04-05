@@ -20,7 +20,7 @@ const platformDefault = {
 
 const updateJson = {
     version: version,
-    notes: `Release v${version}: Fixed updater signature verification (hardcoded keys + full-block integrity).`,
+    notes: `Release v${version}: Fixed YouTube auth window (premature closure) + updater signature verification.`,
     pub_date: new Date().toISOString(),
     platforms: {
         "windows-x86_64": platformDefault,
@@ -31,5 +31,5 @@ const updateJson = {
 };
 
 fs.writeFileSync('update.json', JSON.stringify(updateJson, null, 2));
-console.log('Successfully generated v1.1.2 update.json with FULL BLOCK signature.');
+console.log(`Successfully generated v${version} update.json with FULL BLOCK signature.`);
 console.log('Signature preview: ' + block.substring(0, 50) + '...');

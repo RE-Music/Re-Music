@@ -54,11 +54,12 @@ impl AuthManager {
 
     fn encrypt_data(data: &str, key: &[u8; 32]) -> String {
         let cipher = Aes256Gcm::new(key.into());
-        let nonce = Nonce::from_slice(b"unique nonce!"); // In a real app, use a unique nonce and store it
+        let nonce_val = b"unique nonce"; // 12 bytes
+        let nonce = Nonce::from_slice(nonce_val); 
         let ciphertext = cipher.encrypt(nonce, data.as_bytes()).unwrap_or_default();
         
         // Format: nonce(12) + ciphertext
-        let mut combined = b"unique nonce!".to_vec();
+        let mut combined = nonce_val.to_vec();
         combined.extend_from_slice(&ciphertext);
         general_purpose::STANDARD.encode(combined)
     }

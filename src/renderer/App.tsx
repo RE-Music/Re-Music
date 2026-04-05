@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useAppStore } from './store/useAppStore';
-import { User, Check, X } from 'lucide-react';
+import { User, Check, X, RefreshCw, Settings, Info } from 'lucide-react';
 import { usePlayerStore } from './store/usePlayerStore';
 import { useAudioEngine } from './hooks/useAudioEngine';
 import { useEqStore } from './store/useEqStore';
@@ -24,6 +24,7 @@ import { SpotifyPlayerManager } from './components/layout/SpotifyPlayerManager';
 import { LyricsOverlay } from './components/lyrics/LyricsOverlay';
 import { NexusPoster } from './components/modals/NexusPoster';
 import { UpdateNotifier } from './components/UpdateNotifier';
+import { ContextMenu } from './components/ui/ContextMenu';
 
 const AchievementToast = () => {
   const { toastAchievement, setToastAchievement } = useAchievementStore();
@@ -100,11 +101,11 @@ const PromptModal = () => {
     </div>
   );
 };
-
 function App() {
   const { 
     setProviders, theme, setTheme, setLanguage, setAuthStatus, setLikedTracks, 
-    profileName, setProfileName, setAvatarUrl, setLocalPlaylists, toast 
+    profileName, setProfileName, setAvatarUrl, setLocalPlaylists, toast,
+    showContextMenu, setActiveView
   } = useAppStore();
   const { currentTrack, isPlaying, progressMs, lyrics } = usePlayerStore();
   
@@ -190,14 +191,45 @@ function App() {
     document.body.className = `theme-${theme}`;
   }, [theme]);
 
-  // Отключаем стандартный ПКМ (Context Menu)
+  // Глобальный обработчик ПКМ
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
+      
+      // If we clicked on an element that would have its own menu, let it handle it
+      const target = e.target as HTMLElement;
+      if (target.closest('.track-card') || target.closest('.sidebar-item')) return;
+
+      showContextMenu({
+        x: e.clientX,
+        y: e.clientY,
+        items: [
+          { 
+            label: 'Обновить', 
+            icon: RefreshCw, 
+            onClick: () => {
+              window.location.reload();
+            } 
+          },
+          { 
+            label: 'Настройки', 
+            icon: Settings, 
+            onClick: () => setActiveView('settings')
+          },
+          { 
+            label: 'О приложении', 
+            icon: Info, 
+            onClick: () => {
+               // We could show a modal here later
+               useAppStore.getState().showToast("RE:Music v1.1.3 - Build 2026");
+            } 
+          },
+        ]
+      });
     };
     document.addEventListener('contextmenu', handleContextMenu);
     return () => document.removeEventListener('contextmenu', handleContextMenu);
-  }, []);
+  }, [showContextMenu, setActiveView]);
 
   // Выдача достижения за участие в альфа-тесте
   useEffect(() => {
@@ -361,6 +393,7 @@ function App() {
           <span>{toast.message}</span>
         </div>
       )}
+      <ContextMenu />
     </>
   );
 }
