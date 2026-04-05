@@ -943,12 +943,7 @@ pub fn run() {
     .plugin(tauri_plugin_shell::init())
     .plugin(tauri_plugin_dialog::init())
     .plugin(tauri_plugin_store::Builder::default().build())
-    .plugin({
-        println!("[DEBUG] Initializing Updater Plugin with hardcoded key...");
-        tauri_plugin_updater::Builder::new()
-            .pubkey("RWQ4xBFVEpORL6v+hnBxEK/t33CgDSZUOn0ZwMNjr9zGt7rHM/4/NkU5")
-            .build()
-    })
+    .plugin(tauri_plugin_updater::Builder::new().build())
     .plugin(tauri_plugin_process::init())
     .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
         // When a second instance is launched, just show the existing window
