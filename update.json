@@ -1,11 +1,11 @@
 {
-    "platforms":  {
-                      "windows-x86_64":  {
-                                             "signature":  "ZFc1MGNuVnpkR1ZrSUdOdmJXMWxiblE2SUhOcFoyNWhkSFZ5WlNCbWNtOXRJSFJoZFhKcElITmxZM0psZENCclpYa0tVbFZVVVdOeFdtTmFUbmxOZEhOTEszQmhhR1E0UVdWNWNVMDRhMUowTUdVeVZFTm5WVVZpZVRWelNUSjVabWxPTmxGdFZtSm1RbXB3TVZSdWEwTjRaM2MwT0VKT1RWSlFOR2RoYlRVemFsSnJLMGswT1VFNFZFRm5TV1pyZEZadFJsRnpQUXAwY25WemRHVmtJR052YlcxbGJuUTZJSFJwYldWemRHRnRjRG94TnpjMU16VTFNVEUwQ1dacGJHVTZVa1V0VFhWemFXTmZNUzR4TGpZdE1GOTROalJmWlc0dFZWTXViWE5wQ21aNmQwWjJMMDlHWlRoYU16ZEhaMVJ2WjBKV2VGQjRXV1ZaUzFGMGEySjRNeklyV0NzNFZ6RmxkbkV3YzFoelNsYzBNVVpUT1hOclRXdHROMnRoT0hKb1NYWkVTVEZRTTJSVGFqTjBOblJtYUVSdlIwSjNQVDBL",
-                                             "url":  "https://github.com/RE-Music/Re-Music/releases/download/v1.1.6-alpha/RE-Music_1.1.6-0_x64_en-US.msi"
-                                         }
-                  },
-    "pub_date":  "2026-04-05T05:12:03Z",
-    "version":  "1.1.6-0",
-    "notes":  "Release v1.1.6-alpha: UI/UX polish across all themes, removed debug labels, and fixed vibeGifMode persistence issue."
+    "platforms": {
+        "windows-x86_64": {
+            "signature": "INSERT_NEW_SIGNATURE_HERE",
+            "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.6-1/RE-Music_1.1.6-1_x64_en-US.msi"
+        }
+    },
+    "pub_date": "2026-04-05T16:15:17.514Z",
+    "version": "1.1.6-1",
+    "notes": "v1.1.6-1: 'Glass & Neon' HUD Overhaul. Features refined Sound HUD with custom sliders, spectrum visualization, and fixed protocol icons."
 }
