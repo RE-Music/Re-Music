@@ -13,7 +13,7 @@
     "windows": [
       {
         "title": "RE:Music",
-        "url": "http://localhost:5566",
+        "url": "index.html",
         "width": 1200,
         "height": 800,
         "resizable": true,
