@@ -5,9 +5,9 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 5188,
+    port: 5566,
     strictPort: true,
-    host: '127.0.0.1',
+    host: '0.0.0.0',
   },
   plugins: [react()],
   build: {

@@ -208,7 +208,7 @@ export const SettingsView = () => {
           </div>
           
           <div className="setting-control" style={{ marginBottom: '16px', padding: '16px', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px border rgba(255,255,255,0.05)' }}>
-            <label style={{ fontSize: '10px', opacity: 0.6 }}>Локальный профиль</label>
+            <span className="profile-badge-small" style={{ fontSize: '10px', opacity: 0.6, textTransform: 'uppercase', letterSpacing: '1px' }}>Nexus Resident</span>
             <div className="input-with-action">
               <input 
                 type="text" 

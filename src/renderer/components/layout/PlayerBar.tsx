@@ -8,11 +8,15 @@ import { usePlayerStore } from '../../store/usePlayerStore';
 import { useAppStore } from '../../store/useAppStore';
 import type { LocalPlaylist } from '../../store/useAppStore';
 import { useEqStore } from '../../store/useEqStore';
-import { initAndResumeEq, ensureCtxRunning } from '../../hooks/useAudioEngine';
+import { ensureCtxRunning } from '../../hooks/useAudioEngine';
 import { getTranslation } from '../../utils/i18n';
 import type { Track } from '../../../shared/interfaces/IMusicProvider';
 
+import { SoundSettingsModal } from '../modals/SoundSettingsModal';
+
 export const PlayerBar = () => {
+  const [isSoundSettingsOpen, setIsSoundSettingsOpen] = useState(false);
+
   const { 
     currentTrack, isPlaying, volume, togglePlayPause, setVolume, setProgress, 
     nextTrack, prevTrack, progressMs, durationMs, setDurationMs,
@@ -24,7 +28,7 @@ export const PlayerBar = () => {
     localPlaylists, loadLocalPlaylists, showPrompt, showToast,
     previousView, previousProviderId, setPosterModalOpen
   } = useAppStore();
-  const { isEnabled: isEqEnabled, toggleEq } = useEqStore();
+  const { isEnabled: isEqEnabled } = useEqStore();
   const t = getTranslation(language);
   const audioRef = useRef<HTMLAudioElement>(null);
   const playlistMenuRef = useRef<HTMLDivElement>(null);
@@ -450,15 +454,11 @@ export const PlayerBar = () => {
           <div className="volume-progress" style={{ width: `${volume * 100}%` }}></div>
         </div>
         <button 
-          className={`control-btn secondary m-left ${isEqEnabled ? 'active' : ''}`}
-          onClick={() => {
-            // Must call BEFORE toggleEq so we're still inside the user-gesture call stack
-            if (!isEqEnabled) initAndResumeEq();
-            toggleEq();
-          }}
-          title={isEqEnabled ? 'Выключить EQ' : 'Включить EQ'}
+          className={`control-btn secondary m-left ${isEqEnabled ? 'active' : ''} ${isSoundSettingsOpen ? 'popover-active' : ''}`}
+          onClick={() => setIsSoundSettingsOpen(!isSoundSettingsOpen)}
+          title="Настройки звука"
         >
-          <SlidersHorizontal size={18} color={isEqEnabled ? 'var(--accent-color)' : 'currentColor'} />
+          <SlidersHorizontal size={18} color={(isEqEnabled || isSoundSettingsOpen) ? 'var(--accent-color)' : 'currentColor'} />
         </button>
         <button 
           className={`control-btn secondary m-left ${isLyricsOpen ? 'active' : ''}`}
@@ -480,6 +480,10 @@ export const PlayerBar = () => {
           <Maximize2 size={18} />
         </button>
       </div>
+      <SoundSettingsModal 
+        isOpen={isSoundSettingsOpen} 
+        onClose={() => setIsSoundSettingsOpen(false)} 
+      />
     </div>
   );
 };
