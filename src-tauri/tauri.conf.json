@@ -42,7 +42,7 @@
       "endpoints": [
         "https://raw.githubusercontent.com/RE-Music/Re-Music/main/update.json"
       ],
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJGOTE5MzEyNTUxMUM0MzgKUldRNHhCRlZFcE9STDZ2K2huQnhFSy90MzNDZ0RTWlVPbjBad01OanI5ekd0N3JITS80L05rVTUK"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEI2OENEQzY0NUNBNjcyRDAKUldUUWNxWmNaTnlNdG1Ta3d3MG1scGdZVnFLSlNFallpM1FyVkZWU3FuWU5xSTBtNERPalZlYlYK"
     }
   }
 }
