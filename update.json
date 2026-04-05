@@ -1,11 +1,11 @@
 {
-  "version": "1.1.4",
-  "notes": "Release v1.1.4: Fixed tray icon duplicating, added closing to tray instead of quitting, fixed playlist context menu not closing on outside click.",
-  "pub_date": "2026-04-05T00:30:00Z",
+  "version": "1.1.5",
+  "notes": "Release v1.1.5: UI fixes for Identity settings page and about page version sync.",
+  "pub_date": "2026-04-05T00:55:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNHhCRlZFcE9STHh5TmtlV002c0p3enh3SHFpemZIanl6R3RZT2lEZFVyRE1RVitIMDY0UWZJNWo5eUNNdWFhTENVRnFiVnR5TVVoUFRZWUNVZ24rMmRUWFZIdGlqRXdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc1MzQ5MTcyCWZpbGU6UkUtTXVzaWNfMS4xLjRfeDY0X2VuLVVTLm1zaQpSVDgrNHZ0cTdYWDhrS2d4RUhYc0tuUXBBT1dDWHFTa2M5OWJ1QTRobEMyZjNPRlIrVWxXR3JobWZpVXhxcGZBczFob3dzd0cwQWJwZHJtZ0dEZmVDUT09Cg==",
-      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.4/RE-Music_1.1.4_x64_en-US.msi"
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVRNHhCRlZFcE9STDgyT094TEpGK3pESWdZQmhhVXV4VE53cTZCV1BUOEJYazdDL3dzZnNhYjVIeXdxblZXZDVIYUVwQVNDa2FMQ2hNMllOMllxbTJ4Ny9sQmNlejNzTndNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc1MzUwNTE3CWZpbGU6UkUtTXVzaWNfMS4xLjVfeDY0X2VuLVVTLm1zaQorb1ZSckpYbldodkZjRjQ0VGVTMnF4N05ETFY4NThMMGVpWWgrWlFyVmd0Y3B2ZG91UWtPUWh4VTI1VDQydFIxeEUxTVc3dDV3Ui95bXZmbEhzZlNEZz09Cg==",
+      "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.5/RE-Music_1.1.5_x64_en-US.msi"
     }
   }
 }
