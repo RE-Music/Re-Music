@@ -28,7 +28,7 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "targets": ["msi", "nsis"],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -39,10 +39,11 @@
   },
   "plugins": {
     "updater": {
+      "active": true,
       "endpoints": [
         "https://raw.githubusercontent.com/RE-Music/Re-Music/main/update.json"
       ],
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEI2OENEQzY0NUNBNjcyRDAKUldUUWNxWmNaTnlNdG1Ta3d3MG1scGdZVnFLSlNFallpM1FyVkZWU3FuWU5xSTBtNERPalZlYlYK"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY2ODk5OTY0RTBFNTNDMjgKUldRb1BPWGdaSm1KWmxSOHQyZ0JURmNwZmF6N3NvUVFQNEtNdVZOWm1UU0FJeW9xQ0R6clQ4NjgK"
     }
   }
 }
