@@ -27,10 +27,21 @@ export const PlayerBar = () => {
   const { isEnabled: isEqEnabled, toggleEq } = useEqStore();
   const t = getTranslation(language);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const playlistMenuRef = useRef<HTMLDivElement>(null);
 
   const [showPlaylistMenu, setShowPlaylistMenu] = useState(false);
   const [playlists, setPlaylists] = useState<any[]>([]);
   const [isPlaylistsLoading, setIsPlaylistsLoading] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (showPlaylistMenu && playlistMenuRef.current && !playlistMenuRef.current.contains(e.target as Node)) {
+        setShowPlaylistMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showPlaylistMenu]);
 
   // Playback Synchronization
   useEffect(() => {
@@ -252,7 +263,7 @@ export const PlayerBar = () => {
             >
               <Share2 size={18} />
             </button>
-            <div className="player-menu-container" style={{ position: 'relative' }}>
+            <div className="player-menu-container" style={{ position: 'relative' }} ref={playlistMenuRef}>
               <button 
                 className={`control-btn secondary ${showPlaylistMenu ? 'active' : ''}`}
                 onClick={(e) => {

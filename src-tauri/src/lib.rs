@@ -944,14 +944,24 @@ pub fn run() {
             .build()
     })
     .plugin(tauri_plugin_process::init())
+    .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
+        // When a second instance is launched, just show the existing window
+        if let Some(window) = app.get_webview_window("main") {
+            let _ = window.show();
+            let _ = window.unminimize();
+            let _ = window.set_focus();
+        }
+    }))
     .setup(move |app| {
-      let quit_i = MenuItem::with_id(app, "quit", "Quit", true, None::<&str>).unwrap();
-      let show_i = MenuItem::with_id(app, "show", "Show", true, None::<&str>).unwrap();
+      let quit_i = MenuItem::with_id(app, "quit", "✕  Выйти", true, None::<&str>).unwrap();
+      let show_i = MenuItem::with_id(app, "show", "🎵  Показать", true, None::<&str>).unwrap();
       let menu = Menu::with_items(app, &[&show_i, &quit_i]).unwrap();
 
       let _tray = TrayIconBuilder::new()
           .icon(app.default_window_icon().unwrap().clone())
+          .tooltip("RE:Music")
           .menu(&menu)
+          .show_menu_on_left_click(false)
           .on_menu_event(|app, event| match event.id.as_ref() {
               "quit" => {
                   app.exit(0);
@@ -959,6 +969,7 @@ pub fn run() {
               "show" => {
                   if let Some(window) = app.get_webview_window("main") {
                       let _ = window.show();
+                      let _ = window.unminimize();
                       let _ = window.set_focus();
                   }
               }
@@ -973,11 +984,23 @@ pub fn run() {
                   let app = tray.app_handle();
                   if let Some(window) = app.get_webview_window("main") {
                       let _ = window.show();
+                      let _ = window.unminimize();
                       let _ = window.set_focus();
                   }
               }
           })
           .build(app).unwrap();
+
+      // Intercept the window close button — hide to tray instead of quitting
+      if let Some(window) = app.get_webview_window("main") {
+          let win_clone = window.clone();
+          window.on_window_event(move |event| {
+              if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+                  api.prevent_close();
+                  let _ = win_clone.hide();
+              }
+          });
+      }
 
       let app_data = app.path().app_data_dir().unwrap_or_default();
       let auth_path = app_data.join("auth.json");
