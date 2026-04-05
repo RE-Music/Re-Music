@@ -2,10 +2,10 @@
     "platforms":  {
                       "windows-x86_64":  {
                                              "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUUWNxWmNaTnlNdG1iQk9RVklLRVZ1VW5QeDM3SE9vT3BaN0N4UTJqd3BBTW41MFZEN0dEWkhDYzNTbzdxa2JqSEpveFFVcUdJSUFXSnJxa08vb2pJeFFxUHptM1NxRXdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc1MzUzMjEzCWZpbGU6UkUtTXVzaWNfMS4xLjYtMF94NjRfZW4tVVMubXNpClE3N0cwSkR0b3kxSUkxd2lKMEZYTGl1VWIyU0VLVmFyREtTTzEwNDcxOHc5M0Q5UlByN0dwcnNxVGY0TExGcjUwc1hsQXd3WHU2SCszYzEwcTJlRkJnPT0K",
-                                             "url":  "https://github.com/RE-Music/Re-Music/releases/download/v1.1.6-0/RE-Music_1.1.6-0_x64_en-US.msi"
+                                             "url":  "https://github.com/RE-Music/Re-Music/releases/download/v1.1.6-alpha/RE-Music_1.1.6-0_x64_en-US.msi"
                                          }
                   },
-    "pub_date":  "2026-04-05T04:40:47Z",
+    "pub_date":  "2026-04-05T04:44:06Z",
     "version":  "1.1.6-0",
     "notes":  "Release v1.1.6-alpha: UI/UX polish across all themes, removed debug labels, and fixed vibeGifMode persistence issue."
 }

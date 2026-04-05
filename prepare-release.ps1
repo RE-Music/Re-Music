@@ -1,8 +1,9 @@
 # RE:Music Release Preparation Script (PowerShell) - MANUAL SIGNING COMPATIBLE
 $version = "1.1.6-0"
+$tag = "v1.1.6-alpha"
 $releaseDir = "git-release"
 
-Write-Host "--- Start Release Preparation v$version ---" -ForegroundColor Cyan
+Write-Host "--- Start Release Preparation v$tag ($version) ---" -ForegroundColor Cyan
 
 if (-not (Test-Path $releaseDir)) { New-Object -ItemType Directory -Path $releaseDir }
 
@@ -32,7 +33,7 @@ $updateJson = @{
     platforms = @{
         "windows-x86_64" = @{
             signature = $sigBase64
-            url = "https://github.com/RE-Music/Re-Music/releases/download/v$version/$($msi.Name)"
+            url = "https://github.com/RE-Music/Re-Music/releases/download/$tag/$($msi.Name)"
         }
     }
 }
