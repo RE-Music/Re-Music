@@ -1,10 +1,10 @@
 {
   "version": "1.1.5",
-  "notes": "Release v1.1.5: UI fixes for Identity settings page and about page version sync.",
-  "pub_date": "2026-04-05T00:55:00Z",
+  "notes": "Release v1.1.5 (Hotfix): Fixed updater public key signature format.",
+  "pub_date": "2026-04-05T01:12:00Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "untrusted comment: signature from tauri secret key\nRUQ4xBFVEpORL82OOxLJF+zDIgYBhaUuxTNwq6BWPT8BXk7C/wsfsab5HywqnVWd5HaEpASCkaLChM2YN2Yqm2x7/lBcez3sNwM=\ntrusted comment: timestamp:1775350517\tfile:RE-Music_1.1.5_x64_en-US.msi\n+oVRrJXnWhvFcF44TeS2qx7NDLV858L0eiYh+ZQrVgtcpvdouQkOQhxU25T42tR1xE1MW7t5wR/ymvflHsfSDg==",
+      "signature": "untrusted comment: signature from tauri secret key\nRUQ4xBFVEpORLxj1R4TfBEs7hb3vuT5cQIu3D7/jdSeSD84/1AC3oQcR26iFqUOlrptO8bzmmaJodv2D7lDp8uCkvKut/Pvwswk=\ntrusted comment: timestamp:1775351558\tfile:RE-Music_1.1.5_x64_en-US.msi\n6nJTxb694sK7aKdaTWgYR7Lb6M9eY30RwDTreAVCeac09G4qLRw7ubJFFFj39qcv75dCUfjBUcfGzToCX1J7Dw==",
       "url": "https://github.com/RE-Music/Re-Music/releases/download/v1.1.5/RE-Music_1.1.5_x64_en-US.msi"
     }
   }
