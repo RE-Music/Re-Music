@@ -35,3 +35,16 @@ dist-electron
 
 # Keys
 src-tauri/keys/*.key
+
+# Scratch and Agent Artifacts
+task.md
+implementation_plan.md
+walkthrough.md
+/*.js
+!/eslint.config.js
+MyLikesDownloader_temp/
+backup/
+build_log.txt
+sc.html
+test-build/
+-p/
