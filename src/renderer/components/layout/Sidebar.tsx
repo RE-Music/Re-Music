@@ -136,7 +136,7 @@ export const Sidebar = () => {
           onClick={() => setActiveView('settings')}
         >
           <div className="nav-icon-wrapper"><Settings size={18} /></div>
-          <span>{t.sidebar?.settings || 'Настройки'} (V8-DEBUG-NEXUS)</span>
+          <span>{t.sidebar?.settings || 'Настройки'}</span>
         </button>
       </div>
     </div>

@@ -142,6 +142,7 @@ function App() {
           if (settings.profileName) setProfileName(settings.profileName);
           if (settings.avatarUrl) setAvatarUrl(settings.avatarUrl);
           if (settings.localPlaylists) setLocalPlaylists(settings.localPlaylists);
+          if (settings.vibeGifMode) useAppStore.getState().setVibeGifMode(settings.vibeGifMode);
           if (typeof settings.volume === 'number') {
              usePlayerStore.getState().setVolume(settings.volume);
           }

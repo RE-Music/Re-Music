@@ -279,7 +279,7 @@ export const SettingsView = () => {
           <div className="about-info">
             <div className="info-row">
               <span>{t.settings?.version || 'Version'}</span>
-              <span>{packageJson.version}</span>
+              <span>{packageJson.version === '1.1.6-0' ? '1.1.6-alpha' : packageJson.version}</span>
             </div>
             <div className="info-row">
               <span>{t.settings?.developers || 'Developers'}</span>

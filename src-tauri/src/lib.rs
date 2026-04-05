@@ -695,6 +695,12 @@ async fn update_setting(
             else { s.language = val.to_string(); }
         }
         config.save().await;
+    } else if key == "vibeGifMode" {
+        if let Some(mode) = value.as_str() {
+            let mut s = config.settings.write().await;
+            s.vibe_gif_mode = mode.to_string();
+        }
+        config.save().await;
     } else if key == "volume" {
         if let Some(vol) = value.as_f64() {
             let mut s = config.settings.write().await;
